@@ -3,26 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>asyncbuilt — AI Workflow Automation</title>
+<title>asyncbuilt — Remove the friction.</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ink: #1a1a18; --paper: #f7f5f0; --cream: #edeae2;
-    --sage: #5c7a5e; --sage-light: #dde8dd;
-    --gold: #b8942a; --gold-light: #f7f0dc;
-    --muted: #7a7870; --border: #d4d0c8;
+    --ink: #1a1a18;
+    --paper: #f7f5f0;
+    --cream: #edeae2;
+    --sage: #5c7a5e;
+    --sage-light: #dde8dd;
+    --gold: #b8942a;
+    --gold-light: #f7f0dc;
+    --violet: #5c4fb5;
+    --violet-light: #eeedfe;
+    --violet-mid: #7f77dd;
+    --muted: #7a7870;
+    --border: #d4d0c8;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { background: var(--paper); color: var(--ink); font-family: 'Outfit', sans-serif; line-height: 1.6; min-height: 100vh; }
   .page { max-width: 860px; margin: 0 auto; padding: 4rem 2rem 6rem; }
- 
+
   .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5rem; }
   .nav-name { font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 500; letter-spacing: 0.06em; color: var(--ink); text-decoration: none; }
   .nav-name span { color: var(--sage); }
   .nav-status { display: flex; align-items: center; gap: 7px; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); }
   .status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--sage); animation: pulse 2.5s infinite; }
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
- 
+
   .hero { margin-bottom: 5rem; }
   .hero-eyebrow { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
   .hero-title { font-family: 'DM Serif Display', serif; font-size: 3.2rem; line-height: 1.08; margin-bottom: 1.5rem; }
@@ -32,12 +40,41 @@
   .tag { font-family: 'DM Mono', monospace; font-size: 11px; padding: 4px 12px; border-radius: 2px; }
   .tag-sage { background: var(--sage-light); color: var(--sage); }
   .tag-gold { background: var(--gold-light); color: var(--gold); }
+  .tag-violet { background: var(--violet-light); color: var(--violet); }
   .tag-plain { background: var(--cream); color: var(--muted); border: 0.5px solid var(--border); }
- 
+
   .slabel { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 10px; }
   .slabel::after { content: ''; flex: 1; height: 1px; background: var(--border); }
   .section { margin-bottom: 4rem; }
- 
+
+  /* PRODUCT SHELF */
+  .product-shelf { border: 1px solid var(--border); overflow: hidden; }
+  .product-shelf-header { background: var(--ink); padding: 1rem 1.5rem; display: flex; align-items: center; justify-content: space-between; }
+  .shelf-title { font-family: 'DM Serif Display', serif; font-size: 1rem; font-style: italic; color: var(--paper); }
+  .shelf-sub { font-family: 'DM Mono', monospace; font-size: 10px; color: rgba(247,245,240,0.45); letter-spacing: 0.1em; }
+  .product-row { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 1.5rem; padding: 1.25rem 1.5rem; border-bottom: 0.5px solid var(--border); background: white; transition: background 0.15s; }
+  .product-row:last-child { border-bottom: none; }
+  .product-row:hover { background: var(--paper); }
+  .product-row.wip { background: var(--paper); opacity: 0.7; }
+  .product-row.wip:hover { background: var(--cream); opacity: 1; }
+  .product-index { font-family: 'DM Serif Display', serif; font-size: 1.6rem; color: var(--border); line-height: 1; min-width: 28px; }
+  .product-info { display: flex; flex-direction: column; gap: 3px; }
+  .product-name { font-size: 0.95rem; font-weight: 600; color: var(--ink); line-height: 1.3; }
+  .product-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+  .product-tags { display: flex; gap: 6px; margin-top: 4px; flex-wrap: wrap; }
+  .ptag { font-family: 'DM Mono', monospace; font-size: 10px; padding: 2px 8px; border-radius: 2px; }
+  .ptag-violet { background: var(--violet-light); color: var(--violet); }
+  .ptag-plain { background: var(--cream); color: var(--muted); border: 0.5px solid var(--border); }
+  .product-action { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; flex-shrink: 0; }
+  .product-price { font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 500; color: var(--ink); white-space: nowrap; }
+  .product-price.tbd { color: var(--muted); font-size: 11px; }
+  .btn-buy { font-family: 'DM Mono', monospace; font-size: 10px; padding: 5px 14px; border-radius: 2px; text-decoration: none; white-space: nowrap; border: 0.5px solid var(--border); color: var(--muted); background: transparent; cursor: default; }
+  .btn-buy.live { background: var(--ink); color: var(--paper); border-color: var(--ink); cursor: pointer; }
+  .btn-buy.live:hover { background: var(--sage); border-color: var(--sage); }
+  .shelf-footer { background: var(--cream); padding: 0.85rem 1.5rem; display: flex; align-items: center; gap: 8px; }
+  .shelf-footer-text { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 0.06em; }
+
+  /* PORTFOLIO CARDS */
   .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); overflow: hidden; }
   .card { background: var(--paper); padding: 1.75rem; display: flex; flex-direction: column; gap: 1rem; transition: background 0.15s; }
   .card:hover { background: white; }
@@ -54,56 +91,126 @@
   .card-wip .card-num { color: var(--border); }
   .card-wip .card-title { color: var(--muted); }
   .wip-badge { font-family: 'DM Mono', monospace; font-size: 10px; padding: 3px 10px; background: white; border: 0.5px solid var(--border); color: var(--muted); border-radius: 2px; }
- 
+
+  /* SERVICE GRID */
   .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); overflow: hidden; }
   .service { background: var(--paper); padding: 1.5rem 1.25rem; }
   .service-icon { font-size: 1.3rem; margin-bottom: 0.75rem; color: var(--sage); }
   .service-title { font-size: 0.9rem; font-weight: 600; margin-bottom: 6px; }
   .service-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
- 
+
+  /* CTA */
   .cta-block { background: var(--ink); color: var(--paper); padding: 2.5rem; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 2rem; }
   .cta-title { font-family: 'DM Serif Display', serif; font-size: 1.5rem; font-style: italic; margin-bottom: 0.5rem; }
   .cta-sub { font-size: 0.85rem; color: rgba(247,245,240,0.55); line-height: 1.65; }
   .cta-link { font-family: 'DM Mono', monospace; font-size: 11px; padding: 10px 20px; background: transparent; border: 1px solid rgba(247,245,240,0.35); color: var(--paper); text-decoration: none; border-radius: 2px; white-space: nowrap; transition: background 0.15s; }
   .cta-link:hover { background: rgba(247,245,240,0.08); }
- 
+
   .footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 0.5px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
   .footer-name { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--muted); }
   .footer-note { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--border); }
- 
+
   @media(max-width:640px){
     .hero-title { font-size: 2.1rem; }
     .card-grid, .service-grid { grid-template-columns: 1fr; }
     .cta-block { grid-template-columns: 1fr; }
     .nav { flex-direction: column; align-items: flex-start; gap: 1rem; margin-bottom: 3rem; }
     .footer { flex-direction: column; align-items: flex-start; gap: 6px; }
+    .product-row { grid-template-columns: auto 1fr; gap: 1rem; }
+    .product-action { flex-direction: row; align-items: center; grid-column: 1 / -1; padding-top: 0.5rem; border-top: 0.5px solid var(--border); }
+    .product-price { margin-right: auto; }
   }
 </style>
 </head>
 <body>
 <div class="page">
- 
+
   <nav class="nav">
     <a href="#" class="nav-name">async<span>built</span></a>
     <div class="nav-status"><span class="status-dot"></span>Available for new projects</div>
   </nav>
- 
+
   <div class="hero">
-    <div class="hero-eyebrow">AI Workflow Automation · Solo Micro-Service</div>
-    <h1 class="hero-title">I build AI systems<br>that save you <em>hours</em><br>every week.</h1>
-    <p class="hero-desc">Fixed-price, fully async. You describe the repetitive task. I build a custom AI workflow that handles it — delivered with documentation, no calls required.</p>
+    <div class="hero-eyebrow">AI tools &amp; digital products · Remove the friction.</div>
+    <h1 class="hero-title">Less friction.<br>More <em>done.</em></h1>
+    <p class="hero-desc">AI micro-services and ready-to-use digital products for independent workers — built for people who work alone and want to keep it that way.</p>
     <div class="hero-tags">
-      <span class="tag tag-sage">From €150 / project</span>
-      <span class="tag tag-gold">Delivered in 5 days</span>
-      <span class="tag tag-plain">No code required on your end</span>
+      <span class="tag tag-violet">Digital products from €9</span>
+      <span class="tag tag-sage">Custom AI services from €150</span>
       <span class="tag tag-plain">100% async</span>
+      <span class="tag tag-plain">No calls</span>
     </div>
   </div>
- 
+
+  <!-- DIGITAL PRODUCTS -->
   <div class="section">
-    <div class="slabel">Portfolio examples</div>
+    <div class="slabel">Digital products</div>
+    <div class="product-shelf">
+      <div class="product-shelf-header">
+        <span class="shelf-title">Ready to download. No waiting, no brief, no calls.</span>
+        <span class="shelf-sub">Gumroad</span>
+      </div>
+
+      <div class="product-row wip">
+        <div class="product-index">01</div>
+        <div class="product-info">
+          <div class="product-name">ADHD Weekly Reset System</div>
+          <div class="product-desc">A weekly planning system built for ADHD brains — structure without rigidity, momentum without overwhelm.</div>
+          <div class="product-tags">
+            <span class="ptag ptag-violet">Notion template</span>
+            <span class="ptag ptag-plain">Freelancers</span>
+            <span class="ptag ptag-plain">Solopreneurs</span>
+          </div>
+        </div>
+        <div class="product-action">
+          <span class="product-price tbd">Coming soon</span>
+          <span class="btn-buy">Notify me</span>
+        </div>
+      </div>
+
+      <div class="product-row wip">
+        <div class="product-index">02</div>
+        <div class="product-info">
+          <div class="product-name">Job Search Tracker + Interview Prep Pack</div>
+          <div class="product-desc">Track applications, prep for interviews, stay organised through the chaos — without losing your mind.</div>
+          <div class="product-tags">
+            <span class="ptag ptag-violet">Spreadsheet + doc bundle</span>
+            <span class="ptag ptag-plain">Job seekers</span>
+          </div>
+        </div>
+        <div class="product-action">
+          <span class="product-price tbd">Coming soon</span>
+          <span class="btn-buy">Notify me</span>
+        </div>
+      </div>
+
+      <div class="product-row wip">
+        <div class="product-index">03</div>
+        <div class="product-info">
+          <div class="product-name">Freelance Client Onboarding Kit</div>
+          <div class="product-desc">Welcome email, scope doc, briefing template, invoice checklist. Everything you need to onboard a client cleanly — never start from scratch again.</div>
+          <div class="product-tags">
+            <span class="ptag ptag-violet">Doc + template bundle</span>
+            <span class="ptag ptag-plain">Freelancers</span>
+          </div>
+        </div>
+        <div class="product-action">
+          <span class="product-price tbd">Coming soon</span>
+          <span class="btn-buy">Notify me</span>
+        </div>
+      </div>
+
+      <div class="shelf-footer">
+        <span class="shelf-footer-text">More products in progress — all built around one idea: remove the friction from independent work.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- AI MICRO-SERVICES -->
+  <div class="section">
+    <div class="slabel">AI micro-services — portfolio</div>
     <div class="card-grid">
- 
+
       <div class="card">
         <div class="card-num">01</div>
         <div class="card-title">AI email reply system</div>
@@ -114,7 +221,7 @@
           <a href="portfolio/ex01-email-reply--sofia--fr.html" class="card-link link-fr">Voir FR →</a>
         </div>
       </div>
- 
+
       <div class="card">
         <div class="card-num">02</div>
         <div class="card-title">Weekly sales report generator</div>
@@ -125,7 +232,7 @@
           <a href="portfolio/ex02-weekly-report--marc--fr.html" class="card-link link-fr">Voir FR →</a>
         </div>
       </div>
- 
+
       <div class="card">
         <div class="card-num">03</div>
         <div class="card-title">Content repurposing pipeline</div>
@@ -136,7 +243,7 @@
           <a href="portfolio/ex03-content-repurpose--laure--fr.html" class="card-link link-fr">Voir FR →</a>
         </div>
       </div>
- 
+
       <div class="card card-wip">
         <div class="card-num">04</div>
         <div class="card-title">Your workflow here</div>
@@ -146,43 +253,49 @@
           <span class="wip-badge">Get in touch</span>
         </div>
       </div>
- 
+
     </div>
   </div>
- 
+
+  <!-- WHAT I BUILD -->
   <div class="section">
     <div class="slabel">What I build</div>
     <div class="service-grid">
       <div class="service">
         <div class="service-icon">✦</div>
         <div class="service-title">Prompt systems</div>
-        <div class="service-desc">Custom AI prompts that produce consistent, high-quality output for your specific use case — emails, reports, summaries, responses.</div>
+        <div class="service-desc">Custom AI prompts for your specific workflow — emails, reports, summaries. Consistent output, every time.</div>
       </div>
       <div class="service">
         <div class="service-icon">⟳</div>
         <div class="service-title">Workflow automation</div>
-        <div class="service-desc">Repetitive tasks turned into a simple copy-paste or one-click process using AI tools you already have access to.</div>
+        <div class="service-desc">Repetitive tasks turned into a simple copy-paste process using AI tools you already have access to.</div>
       </div>
       <div class="service">
         <div class="service-icon">◈</div>
-        <div class="service-title">Content pipelines</div>
-        <div class="service-desc">One input, multiple outputs. Articles, posts, newsletters — produced consistently without the manual rewriting.</div>
+        <div class="service-title">Digital products</div>
+        <div class="service-desc">Ready-to-use templates, trackers, and systems — download once, remove the friction for good.</div>
       </div>
     </div>
   </div>
- 
+
+  <!-- CTA -->
   <div class="cta-block">
     <div>
-      <div class="cta-title">Ready to reclaim your Monday mornings?</div>
-      <div class="cta-sub">Describe your repetitive task in one paragraph. I'll confirm scope, price, and timeline within 24 hours — by message, no call required.</div>
+      <div class="cta-title">Ready to remove the friction?</div>
+      <div class="cta-sub">Need something custom? Describe your problem in one paragraph. I'll reply within 24 hours — by message, no call required.</div>
     </div>
     <a href="mailto:hello@asyncbuilt.com" class="cta-link">Get in touch →</a>
   </div>
- 
+
   <div class="footer">
-    <div class="footer-name">asyncbuilt · AI Workflow Automation</div>
+    <div class="footer-name">asyncbuilt · Remove the friction.</div>
     <div class="footer-note">Async · Fixed-price · No calls</div>
   </div>
+
+</div>
+</body>
+</html>
  
 </div>
 </body>
