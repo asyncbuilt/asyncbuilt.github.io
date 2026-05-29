@@ -1,7 +1,7 @@
 # asyncbuilt
  
-AI workflow automation — solo micro-service.
- 
+AI micro-services and ready-to-use digital products for independent workers — built for people who work alone and want to keep it that way.
+
 **Live site:** [asyncbuilt.github.io](https://asyncbuilt.github.io)
  
 ---
