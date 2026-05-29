@@ -12,6 +12,8 @@ AI workflow automation — solo micro-service.
 |---------------|-------------|
 | `index.html` | Main page — service offer and portfolio overview. |
 | `portfolio/` | Client-facing portfolio examples. Each file demonstrates a real AI workflow built for a fictional client — problem, solution, before/after, and prompt system. |
+| `products/` | Products examples. Each file demonstrates a real digital ressource. |
+
  
 ---
  
