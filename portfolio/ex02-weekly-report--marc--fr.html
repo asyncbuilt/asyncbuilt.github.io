@@ -3,7 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio — Générateur de rapport IA</title>
+<title>Générateur de rapport hebdo par IA — portfolio asyncbuilt</title>
+<meta name="description" content="Étude de cas : un système de rapport de ventes par IA pour une petite boutique en ligne — CA, meilleures ventes, alertes stock et une action prioritaire en 4 minutes au lieu de 90. Prix fixe, aucun appel.">
+<meta property="og:title" content="Générateur de rapport hebdo par IA — portfolio asyncbuilt">
+<meta property="og:description" content="De 1h30 chaque lundi à 4 minutes. Les vraies données en entrée, le vrai rapport en sortie, et le système derrière.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://asyncbuilt.com/portfolio/ex02-weekly-report--marc--fr.html">
+<meta property="og:site_name" content="asyncbuilt">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -63,6 +69,18 @@
   .step-n { font-family: 'DM Serif Display', serif; font-size: 2.4rem; color: var(--cream); line-height: 1; margin-bottom: 0.6rem; }
   .step-t { font-weight: 600; font-size: 0.84rem; margin-bottom: 5px; }
   .step-d { font-size: 0.77rem; color: var(--muted); line-height: 1.55; }
+  .offer-cta { border: 1px solid var(--border); background: white; padding: 1.75rem; display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center; }
+  .oc-title { font-family: 'DM Serif Display', serif; font-size: 1.4rem; margin-bottom: 0.4rem; }
+  .oc-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.65; max-width: 460px; }
+  .oc-guarantee { font-size: 0.75rem; color: var(--muted); margin-top: 0.9rem; padding-top: 0.9rem; border-top: 1px dashed var(--border); line-height: 1.6; max-width: 460px; }
+  .oc-right { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; min-width: 210px; }
+  .oc-pricewrap { text-align: right; }
+  .oc-price { font-family: 'DM Serif Display', serif; font-size: 1.8rem; line-height: 1; }
+  .oc-meta { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 0.04em; margin-top: 4px; }
+  .btn-form { font-family: 'DM Mono', monospace; font-size: 11px; padding: 10px 22px; border-radius: 2px; text-decoration: none; text-align: center; width: 100%; border: 0.5px solid var(--gold); background: var(--gold-light); color: var(--gold); transition: background 0.15s, color 0.15s; }
+  .btn-form:hover { background: var(--gold); color: var(--paper); }
+  .oc-all { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); text-decoration: none; transition: color 0.15s; }
+  .oc-all:hover { color: var(--ink); }
   .footer-strip { background: var(--ink); color: var(--paper); padding: 1.5rem 1.75rem; display: flex; justify-content: space-between; align-items: center; gap: 2rem; }
   .footer-s { font-family: 'DM Serif Display', serif; font-size: 1.05rem; font-style: italic; }
   .footer-tools { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
@@ -100,6 +118,7 @@
     .comparison,.io-grid{grid-template-columns:1fr;}
     .stat-bar,.stat-bar-4{grid-template-columns:1fr 1fr;}
     .steps{grid-template-columns:1fr 1fr;}
+    .offer-cta{grid-template-columns:1fr;}
     .footer-strip{flex-direction:column;align-items:flex-start;}
   }
   .back-bar{padding:1rem 2rem;border-bottom:0.5px solid var(--border);background:var(--paper);}
@@ -112,7 +131,7 @@
 <div class="page">
     <div class="header">
       <div><div class="eyebrow">Portfolio — Exemple 02 / AI Micro-Service</div><h1 class="h-title">Générateur de rapport<br><em class="gold">hebdomadaire</em> par IA</h1></div>
-      <div class="header-meta"><span class="pill pill-sage">Aucun code requis</span><span class="pill pill-gold">Délai : 4–6 heures</span></div>
+      <div class="header-meta"><span class="pill pill-sage">Aucun code requis</span><span class="pill pill-gold">Prix fixe · Livré en 7 jours</span></div>
     </div>
     <div class="sw"><div class="slabel">Situation client</div>
       <div class="client-block"><div class="avatar">MD</div>
@@ -160,6 +179,20 @@
 <span class="pk">→</span> <span class="pv">Toutes les devises en €, arrondies à l'euro</span>
 <span class="pk">→</span> <span class="pv">Le propriétaire a 2 minutes pour lire — aller à l'essentiel</span></div></div>
     <div class="sw"><div class="slabel">Comment l'utiliser</div><div class="steps"><div class="step"><div class="step-n">01</div><div class="step-t">Ouvrir le tableur</div><div class="step-d">Sélectionner les données de la semaine dans Google Sheets.</div></div><div class="step"><div class="step-n">02</div><div class="step-t">Copier-coller</div><div class="step-d">Coller les données dans Claude après le prompt système.</div></div><div class="step"><div class="step-n">03</div><div class="step-t">Lire le rapport</div><div class="step-d">Le rapport structuré est prêt en quelques secondes.</div></div><div class="step"><div class="step-n">04</div><div class="step-t">Agir</div><div class="step-d">Une recommandation concrète — décision immédiate.</div></div></div></div>
+    <div class="sw"><div class="slabel">Obtenir ce système</div>
+      <div class="offer-cta">
+        <div>
+          <div class="oc-title">Le Rapport en 4 minutes</div>
+          <p class="oc-desc">Le même système, construit autour de vos données, vos produits, vos seuils. Vous répondez à un formulaire de 3 minutes, je vous envoie un périmètre écrit sous 24 h — tout se passe par message, aucun appel nécessaire. Compatible Google Sheets, Excel et exports CSV.</p>
+          <p class="oc-guarantee"><strong>Garantie simple :</strong> si le livrable ne correspond pas au périmètre confirmé par écrit, je le retravaille sans frais jusqu'à conformité — et si après deux itérations ce n'est toujours pas le cas, remboursement intégral.</p>
+        </div>
+        <div class="oc-right">
+          <div class="oc-pricewrap"><span class="oc-price">250 €</span><div class="oc-meta">/ $250 · 7 jours · aucun appel</div></div>
+          <a href="LIEN_TALLY_REPORT_FR" class="btn-form">Démarrer — formulaire 3 min</a>
+          <a href="../index.html#offers" class="oc-all">Voir toutes les offres à prix fixe →</a>
+        </div>
+      </div>
+    </div>
     <div class="footer-strip"><div class="footer-s">Chaque lundi, le même rapport en 4 minutes.</div><div class="footer-tools"><span class="ttag">Claude / ChatGPT</span><span class="ttag">Google Sheets</span><span class="ttag">Aucun code</span><span class="ttag">Livraison async</span></div></div>
     </div></body>
 </html>
