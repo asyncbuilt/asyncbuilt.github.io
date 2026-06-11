@@ -3,7 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio — Pipeline de Repurposing de Contenu</title>
+<title>Pipeline de repurposing de contenu — portfolio asyncbuilt</title>
+<meta name="description" content="Étude de cas : un article de 650 mots transformé en 8 contenus prêts à publier — 4 posts LinkedIn, une intro newsletter, 3 tips courts — en 3 minutes au lieu de 2 à 3 heures. Prix fixe, aucun appel.">
+<meta property="og:title" content="Pipeline de repurposing de contenu — portfolio asyncbuilt">
+<meta property="og:description" content="1 article en entrée, 8 contenus distincts en sortie — lisez les 8 vrais résultats et le système qui les génère. Une session d'écriture, un mois de contenu.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://asyncbuilt.com/portfolio/ex03-content-repurpose--laure--fr.html">
+<meta property="og:site_name" content="asyncbuilt">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -84,6 +90,19 @@
   .step-t { font-weight: 600; font-size: 0.84rem; margin-bottom: 5px; }
   .step-d { font-size: 0.77rem; color: var(--muted); line-height: 1.55; }
 
+  .offer-cta { border: 1px solid var(--border); background: white; padding: 1.75rem; display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center; }
+  .oc-title { font-family: 'DM Serif Display', serif; font-size: 1.4rem; margin-bottom: 0.4rem; }
+  .oc-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.65; max-width: 460px; }
+  .oc-guarantee { font-size: 0.75rem; color: var(--muted); margin-top: 0.9rem; padding-top: 0.9rem; border-top: 1px dashed var(--border); line-height: 1.6; max-width: 460px; }
+  .oc-right { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; min-width: 210px; }
+  .oc-pricewrap { text-align: right; }
+  .oc-price { font-family: 'DM Serif Display', serif; font-size: 1.8rem; line-height: 1; }
+  .oc-meta { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 0.04em; margin-top: 4px; }
+  .btn-form { font-family: 'DM Mono', monospace; font-size: 11px; padding: 10px 22px; border-radius: 2px; text-decoration: none; text-align: center; width: 100%; border: 0.5px solid var(--gold); background: var(--gold-light); color: var(--gold); transition: background 0.15s, color 0.15s; }
+  .btn-form:hover { background: var(--gold); color: var(--paper); }
+  .oc-all { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); text-decoration: none; transition: color 0.15s; }
+  .oc-all:hover { color: var(--ink); }
+
   .footer-strip { background: var(--ink); color: var(--paper); padding: 1.5rem 1.75rem; display: flex; justify-content: space-between; align-items: center; gap: 2rem; }
   .footer-s { font-family: 'DM Serif Display', serif; font-size: 1.05rem; font-style: italic; }
   .footer-tools { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
@@ -95,6 +114,7 @@
     .io-wrap { grid-template-columns: 1fr; }
     .stat-bar { grid-template-columns: 1fr 1fr; }
     .steps { grid-template-columns: 1fr 1fr; }
+    .offer-cta { grid-template-columns: 1fr; }
     .footer-strip { flex-direction: column; align-items: flex-start; }
   }
 </style>
@@ -110,7 +130,7 @@
     </div>
     <div class="header-meta">
       <span class="pill pill-sage">Aucun code requis</span>
-      <span class="pill pill-gold">Délai : 5–7 heures</span>
+      <span class="pill pill-gold">Prix fixe · Livré en 5 jours ouvrés</span>
     </div>
   </div>
 
@@ -120,7 +140,7 @@
       <div class="avatar">LV</div>
       <div>
         <div class="cname">Laure V. — Consultante RH indépendante</div>
-        <div class="cdesc">Rédige un article long format par mois — typically 600–800 words on recrutement, management ou stratégie RH. Voulait transformer chaque article en un mois complet de présence éditoriale : posts LinkedIn, intro newsletter, tips courts. Passait 2 à 3 heures à réécrire manuellement les mêmes idées dans des formats différents — un processus épuisant qui la faisait publier moins qu'elle ne le souhaitait.</div>
+        <div class="cdesc">Rédige un article long format par mois — généralement 600 à 800 mots sur le recrutement, le management ou la stratégie RH. Voulait transformer chaque article en un mois complet de présence éditoriale : posts LinkedIn, intro newsletter, tips courts. Passait 2 à 3 heures à réécrire manuellement les mêmes idées dans des formats différents — un processus épuisant qui la faisait publier moins qu'elle ne le souhaitait.</div>
       </div>
     </div>
   </div>
@@ -137,7 +157,7 @@
 The fix nobody talks about? Before you write a single line, ask: "What problem does this role need to solve in 18 months — not what did it handle in the last 18?"
 
 That reframe changes everything. The required skills. The seniority level. Sometimes it reveals you're filling the wrong opening entirely...</div>
-          <div class="article-fade">~650 words · RH / Stratégie de recrutement</div>
+          <div class="article-fade">~650 mots · RH / Stratégie de recrutement</div>
         </div>
       </div>
 
@@ -307,7 +327,7 @@ Start with the question: what does success actually look like here, now?</div>
       <div class="stat"><div class="stat-n">1→8</div><div class="stat-l">contenus issus d'un seul article</div></div>
       <div class="stat"><div class="stat-n">3 min</div><div class="stat-l">pour générer — contre 2 à 3 heures</div></div>
       <div class="stat"><div class="stat-n">4</div><div class="stat-l">angles LinkedIn distincts, aucun répétitif</div></div>
-      <div class="stat"><div class="stat-n">1 mo.</div><div class="stat-l">de présence éditoriale depuis une seule session d'écriture</div></div>
+      <div class="stat"><div class="stat-n">1 mois</div><div class="stat-l">de présence éditoriale depuis une seule session d'écriture</div></div>
     </div>
   </div>
 
@@ -344,7 +364,22 @@ Start with the question: what does success actually look like here, now?</div>
       <div class="step"><div class="step-n">01</div><div class="step-t">Rédiger l'article</div><div class="step-d">Un article long format par mois — n'importe quel sujet dans votre domaine. 500 à 800 mots.</div></div>
       <div class="step"><div class="step-n">02</div><div class="step-t">Coller dans Claude</div><div class="step-d">Ajouter le prompt système ci-dessus, puis coller l'article complet à la suite.</div></div>
       <div class="step"><div class="step-n">03</div><div class="step-t">Obtenir 8 contenus</div><div class="step-d">Les 8 contenus générés en une seule passe — chacun avec un angle et un ton différents.</div></div>
-      <div class="step"><div class="step-n">04</div><div class="step-t">Schedule & publish</div><div class="step-d">Copier chaque contenu dans votre planificateur. Une session couvre le mois entier.</div></div>
+      <div class="step"><div class="step-n">04</div><div class="step-t">Planifier &amp; publier</div><div class="step-d">Copier chaque contenu dans votre planificateur. Une session couvre le mois entier.</div></div>
+    </div>
+  </div>
+
+  <div class="sw"><div class="slabel">Obtenir ce système</div>
+    <div class="offer-cta">
+      <div>
+        <div class="oc-title">« 1 → 8 » Réutilisation de contenu</div>
+        <p class="oc-desc">Le même système, construit autour de vos sujets, votre ton, vos plateformes. Vous répondez à un formulaire de 3 minutes, je vous envoie un périmètre écrit sous 24 h — tout se passe par message, aucun appel nécessaire.</p>
+        <p class="oc-guarantee"><strong>Garantie simple :</strong> si le livrable ne correspond pas au périmètre confirmé par écrit, je le retravaille sans frais jusqu'à conformité — et si après deux itérations ce n'est toujours pas le cas, remboursement intégral.</p>
+      </div>
+      <div class="oc-right">
+        <div class="oc-pricewrap"><span class="oc-price">150 €</span><div class="oc-meta">/ $150 · 5 jours ouvrés · aucun appel</div></div>
+        <a href="LIEN_TALLY_1TO8_FR" class="btn-form">Démarrer — formulaire 3 min</a>
+        <a href="../index.html#offers" class="oc-all">Voir toutes les offres à prix fixe →</a>
+      </div>
     </div>
   </div>
 
