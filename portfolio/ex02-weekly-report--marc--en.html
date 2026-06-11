@@ -3,7 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio — AI Report Generator</title>
+<title>AI Weekly Report Generator — asyncbuilt portfolio</title>
+<meta name="description" content="Case study: an AI sales report system for a small online shop — revenue, top sellers, stock alerts and one priority action in 4 minutes instead of 90. Fixed price, no calls.">
+<meta property="og:title" content="AI weekly report generator — asyncbuilt portfolio">
+<meta property="og:description" content="From 1.5 hours every Monday to 4 minutes. See the real data in, the real report out, and the system behind it.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://asyncbuilt.com/portfolio/ex02-weekly-report--marc--en.html">
+<meta property="og:site_name" content="asyncbuilt">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -63,6 +69,18 @@
   .step-n { font-family: 'DM Serif Display', serif; font-size: 2.4rem; color: var(--cream); line-height: 1; margin-bottom: 0.6rem; }
   .step-t { font-weight: 600; font-size: 0.84rem; margin-bottom: 5px; }
   .step-d { font-size: 0.77rem; color: var(--muted); line-height: 1.55; }
+  .offer-cta { border: 1px solid var(--border); background: white; padding: 1.75rem; display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center; }
+  .oc-title { font-family: 'DM Serif Display', serif; font-size: 1.4rem; margin-bottom: 0.4rem; }
+  .oc-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.65; max-width: 460px; }
+  .oc-guarantee { font-size: 0.75rem; color: var(--muted); margin-top: 0.9rem; padding-top: 0.9rem; border-top: 1px dashed var(--border); line-height: 1.6; max-width: 460px; }
+  .oc-right { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; min-width: 210px; }
+  .oc-pricewrap { text-align: right; }
+  .oc-price { font-family: 'DM Serif Display', serif; font-size: 1.8rem; line-height: 1; }
+  .oc-meta { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 0.04em; margin-top: 4px; }
+  .btn-form { font-family: 'DM Mono', monospace; font-size: 11px; padding: 10px 22px; border-radius: 2px; text-decoration: none; text-align: center; width: 100%; border: 0.5px solid var(--sage); background: var(--sage-light); color: var(--sage); transition: background 0.15s, color 0.15s; }
+  .btn-form:hover { background: var(--sage); color: var(--paper); }
+  .oc-all { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); text-decoration: none; transition: color 0.15s; }
+  .oc-all:hover { color: var(--ink); }
   .footer-strip { background: var(--ink); color: var(--paper); padding: 1.5rem 1.75rem; display: flex; justify-content: space-between; align-items: center; gap: 2rem; }
   .footer-s { font-family: 'DM Serif Display', serif; font-size: 1.05rem; font-style: italic; }
   .footer-tools { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
@@ -100,6 +118,7 @@
     .comparison,.io-grid{grid-template-columns:1fr;}
     .stat-bar,.stat-bar-4{grid-template-columns:1fr 1fr;}
     .steps{grid-template-columns:1fr 1fr;}
+    .offer-cta{grid-template-columns:1fr;}
     .footer-strip{flex-direction:column;align-items:flex-start;}
   }
   .back-bar{padding:1rem 2rem;border-bottom:0.5px solid var(--border);background:var(--paper);}
@@ -112,7 +131,7 @@
 <div class="page">
     <div class="header">
       <div><div class="eyebrow">Portfolio — Example 02 / AI Micro-Service</div><h1 class="h-title">AI-powered weekly<br><em class="gold">sales report</em> generator</h1></div>
-      <div class="header-meta"><span class="pill pill-sage">No code required</span><span class="pill pill-gold">Build time: 4–6 hours</span></div>
+      <div class="header-meta"><span class="pill pill-sage">No code required</span><span class="pill pill-gold">Fixed price · 7-day delivery</span></div>
     </div>
     <div class="sw"><div class="slabel">Client situation</div>
       <div class="client-block"><div class="avatar">MD</div>
@@ -160,6 +179,20 @@
 <span class="pk">→</span> <span class="pv">All currency in €, rounded to nearest euro</span>
 <span class="pk">→</span> <span class="pv">Owner has 2 minutes to read — get to the point</span></div></div>
     <div class="sw"><div class="slabel">How to use it</div><div class="steps"><div class="step"><div class="step-n">01</div><div class="step-t">Open the spreadsheet</div><div class="step-d">Select last week's data in Google Sheets or Excel.</div></div><div class="step"><div class="step-n">02</div><div class="step-t">Copy & paste</div><div class="step-d">Paste the data into Claude after the system prompt.</div></div><div class="step"><div class="step-n">03</div><div class="step-t">Read the report</div><div class="step-d">The structured report is ready in seconds.</div></div><div class="step"><div class="step-n">04</div><div class="step-t">Act</div><div class="step-d">One concrete recommendation — immediate decision.</div></div></div></div>
+    <div class="sw"><div class="slabel">Get this system</div>
+      <div class="offer-cta">
+        <div>
+          <div class="oc-title">The 4-Minute Report</div>
+          <p class="oc-desc">The same system, built around your data, your products, your thresholds. You answer a 3-minute form, I send back a written scope within 24 hours — everything happens by message, no call needed. Works with Google Sheets, Excel &amp; CSV exports.</p>
+          <p class="oc-guarantee"><strong>Simple guarantee:</strong> if it doesn't match the written scope we confirm, I rework it free until it does — and if after two rounds it still doesn't, full refund.</p>
+        </div>
+        <div class="oc-right">
+          <div class="oc-pricewrap"><span class="oc-price">€250</span><div class="oc-meta">/ $250 · 7 days · no calls</div></div>
+          <a href="LIEN_TALLY_REPORT_EN" class="btn-form">Start — 3-minute form</a>
+          <a href="../index.html#offers" class="oc-all">See all fixed-price offers →</a>
+        </div>
+      </div>
+    </div>
     <div class="footer-strip"><div class="footer-s">Every Monday, the same report in 4 minutes.</div><div class="footer-tools"><span class="ttag">Claude / ChatGPT</span><span class="ttag">Google Sheets</span><span class="ttag">No code</span><span class="ttag">Async delivery</span></div></div>
     </div></body>
 </html>
