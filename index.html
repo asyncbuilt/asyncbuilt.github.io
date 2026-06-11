@@ -21,6 +21,7 @@
     --border: #d4d0c8;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
   body { background: var(--paper); color: var(--ink); font-family: 'Outfit', sans-serif; line-height: 1.6; min-height: 100vh; }
   .page { max-width: 860px; margin: 0 auto; padding: 4rem 2rem 6rem; }
 
@@ -30,6 +31,7 @@
   .nav-status { display: flex; align-items: center; gap: 7px; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); }
   .status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--sage); animation: pulse 2.5s infinite; }
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+  @media (prefers-reduced-motion: reduce) { .status-dot { animation: none; } html { scroll-behavior: auto; } }
 
   .hero { margin-bottom: 5rem; }
   .hero-eyebrow { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
@@ -38,6 +40,8 @@
   .hero-desc { font-size: 1rem; color: var(--muted); line-height: 1.75; max-width: 520px; margin-bottom: 2rem; }
   .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; }
   .tag { font-family: 'DM Mono', monospace; font-size: 11px; padding: 4px 12px; border-radius: 2px; }
+  a.tag { text-decoration: none; transition: opacity 0.15s; }
+  a.tag:hover { opacity: 0.75; }
   .tag-sage { background: var(--sage-light); color: var(--sage); }
   .tag-gold { background: var(--gold-light); color: var(--gold); }
   .tag-violet { background: var(--violet-light); color: var(--violet); }
@@ -89,10 +93,36 @@
   .card-link:hover { opacity: 0.75; }
   .link-en { background: var(--sage-light); color: var(--sage); }
   .link-fr { background: var(--gold-light); color: var(--gold); }
+  .link-offer { background: var(--violet-light); color: var(--violet); }
   .card-wip { background: var(--cream); }
   .card-wip .card-num { color: var(--border); }
   .card-wip .card-title { color: var(--muted); }
   .wip-badge { font-family: 'DM Mono', monospace; font-size: 10px; padding: 3px 10px; background: white; border: 0.5px solid var(--border); color: var(--muted); border-radius: 2px; }
+
+  /* FIXED-PRICE OFFERS */
+  .offer-intro { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); margin: -0.5rem 0 1.25rem; letter-spacing: 0.02em; }
+  .offer-intro strong { color: var(--ink); font-weight: 500; }
+  .offer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); overflow: hidden; }
+  .offer { background: white; padding: 1.75rem 1.5rem; display: flex; flex-direction: column; gap: 0.9rem; }
+  .offer-kicker { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+  .offer-name { font-family: 'DM Serif Display', serif; font-size: 1.35rem; line-height: 1.15; }
+  .offer-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+  .offer-includes { list-style: none; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+  .offer-includes li { font-size: 0.8rem; color: var(--ink); line-height: 1.5; padding-left: 16px; position: relative; }
+  .offer-includes li::before { content: '✦'; position: absolute; left: 0; top: 3px; font-size: 9px; color: var(--sage); }
+  .offer-price-row { display: flex; align-items: baseline; gap: 10px; padding-top: 0.85rem; border-top: 0.5px solid var(--border); }
+  .offer-price { font-family: 'DM Serif Display', serif; font-size: 1.7rem; line-height: 1; }
+  .offer-meta { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 0.04em; }
+  .offer-actions { display: flex; gap: 8px; }
+  .btn-form { font-family: 'DM Mono', monospace; font-size: 11px; padding: 9px 0; flex: 1; text-align: center; border-radius: 2px; text-decoration: none; border: 0.5px solid transparent; transition: background 0.15s, color 0.15s; }
+  .btn-form-en { background: var(--sage-light); color: var(--sage); border-color: var(--sage); }
+  .btn-form-en:hover { background: var(--sage); color: var(--paper); }
+  .btn-form-fr { background: var(--gold-light); color: var(--gold); border-color: var(--gold); }
+  .btn-form-fr:hover { background: var(--gold); color: var(--paper); }
+  .offer-note { margin-top: 1rem; border: 1px solid var(--border); background: var(--cream); padding: 1rem 1.5rem; display: flex; flex-direction: column; gap: 4px; }
+  .offer-note-title { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sage); }
+  .offer-note-text { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+  .offer-note-text strong { color: var(--ink); font-weight: 500; }
 
   /* SERVICE GRID */
   .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); overflow: hidden; }
@@ -100,6 +130,13 @@
   .service-icon { font-size: 1.3rem; margin-bottom: 0.75rem; color: var(--sage); }
   .service-title { font-size: 0.9rem; font-weight: 600; margin-bottom: 6px; }
   .service-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
+
+  /* NEWSLETTER */
+  .news-block { border: 1px solid var(--border); background: white; padding: 1.75rem; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 2rem; }
+  .news-title { font-family: 'DM Serif Display', serif; font-size: 1.35rem; font-style: italic; margin-bottom: 0.4rem; }
+  .news-sub { font-size: 0.85rem; color: var(--muted); line-height: 1.65; max-width: 460px; }
+  .news-actions { display: flex; flex-direction: column; gap: 8px; min-width: 170px; }
+  .news-actions .btn-form { padding: 9px 18px; }
 
   /* CTA */
   .cta-block { background: var(--ink); color: var(--paper); padding: 2.5rem; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 2rem; }
@@ -114,8 +151,10 @@
 
   @media(max-width:640px){
     .hero-title { font-size: 2.1rem; }
-    .card-grid, .service-grid { grid-template-columns: 1fr; }
-    .cta-block { grid-template-columns: 1fr; }
+    .card-grid, .service-grid, .offer-grid { grid-template-columns: 1fr; }
+    .cta-block, .news-block { grid-template-columns: 1fr; }
+    .news-actions { flex-direction: row; }
+    .news-actions .btn-form { flex: 1; }
     .nav { flex-direction: column; align-items: flex-start; gap: 1rem; margin-bottom: 3rem; }
     .footer { flex-direction: column; align-items: flex-start; gap: 6px; }
     .product-row { grid-template-columns: auto 1fr; gap: 1rem; }
@@ -138,7 +177,7 @@
     <p class="hero-desc">AI micro-services and ready-to-use digital products for independent workers — built for people who work alone and want to keep it that way.</p>
     <div class="hero-tags">
       <span class="tag tag-sage">Digital products from €9</span>
-      <span class="tag tag-gold">Custom AI services from €150</span>
+      <a href="#offers" class="tag tag-gold">Custom AI services from €150 →</a>
       <span class="tag tag-plain">100% async</span>
       <span class="tag tag-plain">No calls</span>
     </div>
@@ -226,9 +265,9 @@
     </div>
   </div>
 
-  <!-- AI MICRO-SERVICES -->
+  <!-- AI MICRO-SERVICES (PROOF) -->
   <div class="section">
-    <div class="slabel">AI micro-services</div>
+    <div class="slabel">AI micro-services — real client systems</div>
     <div class="card-grid">
 
       <div class="card">
@@ -239,6 +278,7 @@
         <div class="card-links">
           <a href="portfolio/ex01-email-reply--sofia--en.html" class="card-link link-en">View EN →</a>
           <a href="portfolio/ex01-email-reply--sofia--fr.html" class="card-link link-fr">Voir FR →</a>
+          <a href="#offer-replies" class="card-link link-offer">Get this system →</a>
         </div>
       </div>
 
@@ -250,6 +290,7 @@
         <div class="card-links">
           <a href="portfolio/ex02-weekly-report--marc--en.html" class="card-link link-en">View EN →</a>
           <a href="portfolio/ex02-weekly-report--marc--fr.html" class="card-link link-fr">Voir FR →</a>
+          <a href="#offer-report" class="card-link link-offer">Get this system →</a>
         </div>
       </div>
 
@@ -261,6 +302,7 @@
         <div class="card-links">
           <a href="portfolio/ex03-content-repurpose--laure--en.html" class="card-link link-en">View EN →</a>
           <a href="portfolio/ex03-content-repurpose--laure--fr.html" class="card-link link-fr">Voir FR →</a>
+          <a href="#offer-1to8" class="card-link link-offer">Get this system →</a>
         </div>
       </div>
 
@@ -274,6 +316,82 @@
         </div>
       </div>
 
+    </div>
+  </div>
+
+  <!-- FIXED-PRICE OFFERS -->
+  <!--
+    PLACEHOLDERS TALLY À REMPLACER (6 liens) :
+    LIEN_TALLY_1TO8_EN · LIEN_TALLY_1TO8_FR
+    LIEN_TALLY_REPORT_EN · LIEN_TALLY_REPORT_FR
+    LIEN_TALLY_REPLIES_EN · LIEN_TALLY_REPLIES_FR
+  -->
+  <div class="section" id="offers">
+    <div class="slabel">Fixed-price offers</div>
+    <p class="offer-intro"><strong>How it works:</strong> 3-minute form → written scope within 24h → you approve &amp; pay → delivered. No calls, ever.</p>
+    <div class="offer-grid">
+
+      <div class="offer" id="offer-1to8">
+        <div class="offer-kicker">Content</div>
+        <div class="offer-name">“1 → 8” Repurposing</div>
+        <p class="offer-desc">One article in, eight ready-to-publish pieces out — in your tone, for your platforms.</p>
+        <ul class="offer-includes">
+          <li>8 pieces: posts, newsletter intro, short tips</li>
+          <li>Your exact voice, captured from one sample</li>
+          <li>Reusable system — works for every future article</li>
+        </ul>
+        <div class="offer-price-row">
+          <span class="offer-price">€150</span>
+          <span class="offer-meta">/ $150 · 5 business days</span>
+        </div>
+        <div class="offer-actions">
+          <a href="LIEN_TALLY_1TO8_EN" class="btn-form btn-form-en">Start — EN</a>
+          <a href="LIEN_TALLY_1TO8_FR" class="btn-form btn-form-fr">Démarrer — FR</a>
+        </div>
+      </div>
+
+      <div class="offer" id="offer-report">
+        <div class="offer-kicker">Reporting</div>
+        <div class="offer-name">The 4-Minute Report</div>
+        <p class="offer-desc">Your raw numbers in, a complete weekly business report out — in 4 minutes instead of 90.</p>
+        <ul class="offer-includes">
+          <li>Revenue, top sellers, alerts, one priority action</li>
+          <li>Works with Google Sheets, Excel &amp; CSV exports</li>
+          <li>Step-by-step written guide included</li>
+        </ul>
+        <div class="offer-price-row">
+          <span class="offer-price">€250</span>
+          <span class="offer-meta">/ $250 · 7 days</span>
+        </div>
+        <div class="offer-actions">
+          <a href="LIEN_TALLY_REPORT_EN" class="btn-form btn-form-en">Start — EN</a>
+          <a href="LIEN_TALLY_REPORT_FR" class="btn-form btn-form-fr">Démarrer — FR</a>
+        </div>
+      </div>
+
+      <div class="offer" id="offer-replies">
+        <div class="offer-kicker">Client emails</div>
+        <div class="offer-name">Replies in 2 Minutes</div>
+        <p class="offer-desc">Warm, personalised client replies in your exact tone — in under 2 minutes instead of 15.</p>
+        <ul class="offer-includes">
+          <li>Custom reply system trained on your past emails</li>
+          <li>Handles pricing, availability, FAQ, terms</li>
+          <li>You stay in control — nothing sends itself</li>
+        </ul>
+        <div class="offer-price-row">
+          <span class="offer-price">€350</span>
+          <span class="offer-meta">/ $350 · 10 days</span>
+        </div>
+        <div class="offer-actions">
+          <a href="LIEN_TALLY_REPLIES_EN" class="btn-form btn-form-en">Start — EN</a>
+          <a href="LIEN_TALLY_REPLIES_FR" class="btn-form btn-form-fr">Démarrer — FR</a>
+        </div>
+      </div>
+
+    </div>
+    <div class="offer-note">
+      <span class="offer-note-title">Simple guarantee</span>
+      <p class="offer-note-text">If the deliverable doesn't match the written scope we confirmed, <strong>I rework it at no cost until it does</strong> — and if after two rounds it still doesn't, you get a full refund. Need it maintained? Optional tune-up retainer: <strong>€40/month</strong>.</p>
     </div>
   </div>
 
@@ -299,11 +417,26 @@
     </div>
   </div>
 
+  <!-- NEWSLETTER -->
+  <div class="section">
+    <div class="slabel">Newsletter</div>
+    <div class="news-block">
+      <div>
+        <div class="news-title">One friction removed, every week.</div>
+        <p class="news-sub">A short, practical email for independent workers: one repetitive task, one AI workflow to kill it. No fluff, unsubscribe anytime.</p>
+      </div>
+      <div class="news-actions">
+        <a href="https://asyncbuilt.kit.com/2293a11bfe" class="btn-form btn-form-en">Subscribe — EN</a>
+        <a href="https://asyncbuilt.kit.com/bb4bef536a" class="btn-form btn-form-fr">S'abonner — FR</a>
+      </div>
+    </div>
+  </div>
+
   <!-- CTA -->
   <div class="cta-block">
     <div>
       <div class="cta-title">Ready to remove the friction?</div>
-      <div class="cta-sub">Need something custom? Describe your problem in one paragraph. I'll reply within 24 hours — by message, no call required.</div>
+      <div class="cta-sub">Need something custom that doesn't fit the offers above? Describe your problem in one paragraph. I'll reply within 24 hours — by message, no call required.</div>
     </div>
     <a href="mailto:hello@asyncbuilt.com" class="cta-link">Get in touch →</a>
   </div>
